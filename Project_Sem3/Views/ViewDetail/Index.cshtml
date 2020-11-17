@@ -1,0 +1,61 @@
+﻿@model Model.DataModel.Product
+
+
+
+<section class="single_product_details_area d-flex align-items-center" style="padding:10%;">
+
+    <!-- Single Product Thumb -->
+
+    <div class="single_product_thumb clearfix">
+        <div class="">
+
+           
+            
+            <img src="@Model.pro_image" alt="">
+        </div>
+    </div>
+
+
+    <!-- Single Product Description -->
+
+
+
+    <div class="single_product_desc clearfix">
+
+        <a href="">
+            <h2>@Model.pro_name</h2>
+        </a>
+        <p class="product-price">
+            @Model.pro_sale_price
+            <span class="old-price" style="padding-left:10px;"> @Model.pro_price</span>
+        </p>
+        <p class="product-desc">@Model.pro_description</p>
+
+        <!-- Form -->
+        <form class="cart-form clearfix" method="post">
+            <!-- Select Box -->
+            <!-- Cart & Favourite Box -->
+            <div class="cart-fav-box d-flex align-items-center">
+                <!-- Cart -->
+                @*<a href="/Shop/AddToBasket/@Model.pro_id" class="btn essence-btn">Add to Cart</a>*@
+                @if (Session["admin"] != null)
+    {
+            <a href="/Shop/AddToBasket/@Model.pro_id" class="btn essence-btn">Thêm vào giỏ hàng</a>
+}
+
+                @if (Session["admin"] == null)
+    {
+            <a href="@Url.Action("Login","Home")" class="btn essence-btn">Thêm vào giỏ hàng</a>
+}
+
+
+                <!-- Favourite -->
+
+            </div>
+        </form>
+
+    </div>
+
+
+</section>
+<!-- ##### Single Product Details Area End ##### -->

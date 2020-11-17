@@ -1,0 +1,135 @@
+﻿@*@model IEnumerable<Model.DataModel.Product>*@
+@using PagedList.Mvc
+@model PagedList.IPagedList<Model.DataModel.Product>
+
+<section class="shop_grid_area section-padding-80">
+    <div class="container">
+        <div class="row" style="padding:10%";>
+            <div class="col-12 col-md-4 col-lg-3">
+                <div class="shop_sidebar_area">
+
+                    <!-- ##### Single Widget ##### -->
+                    <div class="widget catagory mb-50">
+                        <!-- Widget Title -->
+                        <h6 class="widget-title mb-30">Thể loại</h6>
+
+                        <!--  Catagories  -->
+                        <div class="catagories-menu">
+                            <ul id="menu-content2" class="menu-content collapse show">
+                                <!-- Single Item -->
+                                <li data-toggle="collapse" data-target="#clothing">
+                                    <a href="#">Thể loại sách</a>
+                                    <ul class="sub-menu collapse show" id="clothing">
+                                          @{Html.RenderAction("ShowCategory", "Category");} 
+                                       
+                                    </ul>
+                                </li>
+                                <!-- Single Item -->
+                                <li data-toggle="collapse" data-target="#shoes" class="collapsed">
+                                    <a href="#">Tác giả</a>
+                                    <ul class="sub-menu collapse" id="shoes">
+                                       
+                                        @{Html.RenderAction("ShowAuthor", "Author");}
+
+                                    </ul>
+                                </li>
+                                <!-- Single Item -->
+                                <li data-toggle="collapse" data-target="#accessories" class="collapsed">
+                                    <a href="#">Nhà xuất bản</a>
+                                    <ul class="sub-menu collapse" id="accessories">
+                                        @{Html.RenderAction("ShowPublishers", "Publishers");}
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- ##### Single Widget ##### -->
+                  
+                </div>
+            </div>
+
+            <div class="col-12 col-md-8 col-lg-9">
+                <div class="shop_grid_product_area">
+                    
+
+                    <div class="row">
+
+                        <!-- Single Product -->
+                        @foreach (var b in Model)
+                        {
+
+
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="single-product-wrapper">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <img src="@b.pro_image" alt="">
+
+                                        <!-- Hover Thumb -->
+                                        <!-- Product Badge -->
+                                        <div class="product-badge offer-badge">
+                                            <span>@b.pro_sale_price</span>
+                                        </div>
+                                        <!-- Favourite -->
+                                        <div class="product-favourite">
+                                            <a href="#" class="favme fa fa-heart"></a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product Description -->
+                                    <div class="product-description">
+
+                                        <a href="~/ViewDetail/Index/@b.pro_id">
+                                            <h3 style="text-align:center;font-family:inherit">@b.pro_name</h3>
+                                        </a>
+                                        <div style="text-align:center;">
+                                            <p class="product-price" style="font-size:20px;color:red;"><span class="old-price" style="font-size:20px;"> @b.pro_price</span> @b.pro_sale_price</p>
+                                        </div>
+                                       
+
+                                        <!-- Hover Content -->
+                                        <div class="hover-content">
+                                            <!-- Add to Cart -->
+                                            <div class="add-to-cart-btn">
+                                                @if (Session["admin"] != null)
+    {
+                                            <a href="/Shop/AddToBasket/@b.pro_id" class="btn essence-btn" style="padding:8%;">Giỏ Hàng</a>
+}
+                                                @if (Session["admin"] == null)
+    {
+                                            <a href="@Url.Action("Login","Home")" class="btn essence-btn">Giỏ Hàng</a>
+}
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <!-- Single Product -->
+                        <!-- Single Product -->
+                        <!-- Single Product -->
+                        <!-- Single Product -->
+                        <!-- Single Product -->
+                        <!-- Single Product -->
+                        <!-- Single Product -->
+                        <!-- Single Product -->
+
+
+                    </div>
+                </div>
+                <!-- Pagination -->
+                <nav aria-label="navigation">
+
+                    <div class="pagination">
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, cateid=ViewBag.cata, authorid =ViewBag.au, publisherid =ViewBag.pu , search =ViewBag.search}))
+                    </div>
+
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+

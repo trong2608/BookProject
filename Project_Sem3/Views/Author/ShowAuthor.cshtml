@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Model.DataModel.Author>
+
+
+@foreach (var item in Model)
+{
+    <p><a href="/Shop/Index?authorid=@item.author_id">@item.author_name</a></p>
+
+}

@@ -1,0 +1,108 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Model.DataModel.Author>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin_quanli/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+
+
+            <section class="main-content">
+                <div class="col-md-12">
+                    <!-- DATA TABLE -->
+
+                    <div class="table-data__tool">
+                        <div class="table-data__tool-left">
+                            <form action="#" method="post">
+                                <div>
+                                    <div>
+                                        <input class="au-input au-input--xl" type="search" name="search" id="search" placeholder="Nhập từ khóa càn tìm kiếm " />
+
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="table-data__tool-right">
+
+
+                            <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                <a href="@Url.Action("Create","Authors")"   <i style="color: white" > Thêm mới</i> </a>
+                            </button>
+
+
+
+                        </div>
+                    </div>
+                    <table class="table table-borderless table-striped table-earning">
+                        <thead>
+                            <tr>
+                                <th></th>
+
+                                <th>Mã tác giả </th>
+                                <th>Tên tác giả </th>
+
+
+                                <th>Mô tả </th>
+                                <th>Ảnh</th>
+                                <th>Thao tac </th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody id="list-data">
+                            @foreach (var item in Model)
+            {
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.author_id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.author_name)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        <img src="@item.image" width="50" height="50" />
+                                    </td>
+                                    <td>
+
+                                        <button type="button" class="btn btn-outline-primary" disabled="">@Html.ActionLink("Sửa", "Edit", new { id = item.author_id }) </button>
+                                        <button type="button" class="btn btn-outline-warning" disabled="">@Html.ActionLink("Chi tiết", "Details", new { id = item.author_id })</button>
+                                        <button type="button" class="btn btn-outline-danger" disabled="">@Html.ActionLink("Xóa", "Delete", new { id = item.author_id })</button>
+
+
+
+                                    </td>
+                                </tr>
+
+                            }
+
+
+                        </tbody>
+                    </table>
+
+                        <nav aria-label="navigation">
+
+                            <div class="pagination">
+                                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, search = ViewBag.search }))
+                            </div>
+
+                        </nav>
+
+
+                    </div>
+                
+            </section>
+
+
+</div>
+</div>
+</div>

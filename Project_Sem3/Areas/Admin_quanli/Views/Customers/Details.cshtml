@@ -1,0 +1,81 @@
+﻿@model Model.DataModel.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin_quanli/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <h2>Details</h2>
+
+            <div>
+                <h4>Customer</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.cus_name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.cus_name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.email)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.password)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.password)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.phone)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.phone)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.address)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.address)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.status)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.status)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.create_date)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.create_date)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.cus_id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+</div>

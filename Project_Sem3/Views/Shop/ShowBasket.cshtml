@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Project_Sem3.Models.Basket>
+@{
+    ViewBag.Title = "Giỏ hàng của bạn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model != null && Model.Count() > 0)
+{
+    <div class="row row-pb-lg">
+        <div class="col-md-12">
+            <div class="product-name d-flex">
+
+                <div class="one-forth text-left px-4">
+                    <span>Tên sản phẩm</span>
+                </div>
+                <div class="one-eight text-center">
+                    <span>Giá</span>
+                </div>
+                <div class="one-eight text-center">
+                    <span>Số lượng</span>
+                </div>
+                <div class="one-eight text-center">
+                    <span>Tiền</span>
+                </div>
+                <div class="one-eight text-center px-4">
+                    <span>Xóa</span>
+                </div>
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="product-cart d-flex">
+                    <div class="one-forth">
+                        <div class="product-img">
+                            <img src="@Url.Content(item.Picture)" alt="">
+                        </div>
+                        <div class="display-tc">
+                            <h3>@item.ProductName</h3>
+                        </div>
+                    </div>
+                    <div class="one-eight text-center">
+                        <div class="display-tc">
+                            <span class="price">@item.Price VNĐ</span>
+                        </div>
+                    </div>
+                    <div class="one-eight text-center">
+                        <div class="display-tc">
+                            @*<input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="@item.Quantity">*@
+                            <form action="@Url.Action("UpdateCart")" method="get" class="form-cart">
+                                <input type="hidden" name="Id" value="@item.ProductId" />
+                                <input type="number" name="quantity" class="input_quan" value="@item.Quantity" />
+                                <button type="submit" class="btn btn-primary btn-sm btn_update"> Cập nhật </button>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="one-eight text-center">
+                        <div class="display-tc">
+                            <span class="price">@Html.DisplayFor(modelItem => item.Money) VNĐ </span>
+                        </div>
+                    </div>
+                    <div class="one-eight text-center">
+                        <div class="display-tc">
+                            <a href="@Url.Action("Delete", new { id = item.ProductId })" onclick="return confirm('Bạn có muốn chắc chắn muốn xóa sản phẩm không?');" class="btn-btn-danger-btn-sm btnX">X</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row row-pb-lg">
+        <div class="col-md-123">
+            <div class="total-wrap">
+                <div class="row">
+                    <div class="col-sm-4 text-center">
+                        <div class="total">
+                            <div class="grand-total">
+                                <p><span><strong>Total:</strong></span> <span>@ViewBag.Total VNĐ</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 text-center">
+                        <div class="total2">
+                            <a href="@Url.Action("CheckOutt","Shop")" style="color:white;">Thanh toán</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <section class="cart bgwhite p-t-70 p-b-100">
+        <div class="container">
+            <div class="container-table-cart pos-relative" style="display:flex;">
+                <div style="margin: auto;">
+                    <div style="text-align: center;padding:20%;width:550px;">
+                        <img src="~/Content/icon cart.png" />
+                    </div>
+                    <div class="header" style="text-align:center;">Không có sản phẩm nào trong giỏ hàng của bạn</div>
+                    <div class="p-t-25" style="text-align:center;border: solid;
+    background: blanchedalmond; border-radius:6px;width:50%; margin-left:25%;margin-bottom:4%;">
+                        <a href="@Url.Action("Index", "Home")" class="btn btn btn-outline closeCartLine">
+                            Tiếp tục mua hàng
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+}

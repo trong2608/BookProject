@@ -1,0 +1,239 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Title  -->
+    <title>Essence - Shop Book</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="~/Content/template/img/core-img/favicon.ico">
+
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="~/Content/template/css/core-style.css">
+    <link rel="stylesheet" href="~/Content/template/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+
+    <link href="~/Content/style-cart/css/animate.css" rel="stylesheet" />
+    <link href="~/Content/style-cart/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/Content/style-cart/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style-cart/css/flexslider.css" rel="stylesheet" />
+    <link href="~/Content/style-cart/css/icomoon.css" rel="stylesheet" />
+    <link href="~/Content/style-cart/css/ionicons.min.css" rel="stylesheet" />
+    <link href="~/Content/style-cart/css/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Content/style-cart/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/style-cart/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="~/Content/style-cart/css/style.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <!-- ##### Header Area Start ##### -->
+    <header class="header_area">
+        <div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
+            <!-- Classy Menu -->
+            <nav class="classy-navbar" id="essenceNav">
+                <!-- Logo -->
+                <a class="nav-brand" href="@Url.Action("Index","Home")"><img src="~/Content/template/img/core-img/logo.png" alt=""></a>
+                <!-- Navbar Toggler -->
+                <div class="classy-navbar-toggler">
+                    <span class="navbarToggler"><span></span><span></span><span></span></span>
+                </div>
+                <!-- Menu -->
+                <div class="classy-menu">
+                    <!-- close btn -->
+                    <div class="classycloseIcon">
+                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                    </div>
+                    <!-- Nav Start -->
+                    <div class="classynav">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("Index", "Shop")">Danh sách sản phẩm</a>
+                                <div class="megamenu">
+                                </div>
+                            </li>
+                            <li><a href="@Url.Action("Index","Blog")">Blog</a></li>
+                            <li><a href="@Url.Action("Index","Contact")">Liên hệ</a></li>
+                        </ul>
+                    </div>
+                    <!-- Nav End -->
+                </div>
+            </nav>
+
+            <!-- Header Meta Data -->
+            <div class="header-meta d-flex clearfix justify-content-end">
+                <!-- Search Area -->
+                <div class="search-area">
+                    <form action="#" method="post">
+                        <input type="search" name="search" id="search" placeholder="Tìm kiếm">
+                        <button type="submit" style="position:initial">
+                            @if (Session["admin"] != null)
+                            {
+
+                                string name = Session["ten"].ToString();
+
+                                <div class="dropdown">
+                                   
+                                    <button class="btn dropdown-toggle" style="position:initial;margin-top:8%;" type="button" id="dropdownMenu1" data-toggle="dropdown" >
+                          
+                                        <span class="idemo" > @name  </span>
+                                   </button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li role="presentation"> <a href="@Url.Action("Logout","Home")"> Logout </a></li>
+
+                                    </ul>
+                                </div>
+                            }
+                           @if (Session["admin"] == null)
+                            {
+
+                                <span>Đăng nhập <i class="fa fa-angle-down"></i> </span>
+                                <div class="user-login-info">
+                                    <a href="@Url.Action("Login","Home")" class="fa fa-user"  style="font-size:25px;"> </a>
+                                </div>
+                            }
+
+
+                        </button>
+                    </form>
+                </div>
+                <!-- Favourite Area -->
+                <!-- User Login Info -->
+                <!-- Cart Area -->
+              
+            </div>
+
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+    <!-- ##### Right Side Cart Area ##### -->
+   
+
+   
+    <!-- ##### Right Side Cart End ##### -->
+    <!-- ##### Welcome Area Start ##### -->
+    @RenderBody()
+    <!-- ##### Brands Area End ##### -->
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer_area clearfix">
+        <div class="container">
+            <div class="row">
+                <!-- Single Widget Area -->
+                <div class="col-12 col-md-6">
+                    <div class="single_widget_area d-flex mb-30">
+                        <!-- Logo -->
+                        <div class="footer-logo mr-50">
+                            <a href="@Url.Action("Index","Home")"><img src="~/Content/template/img/core-img/logo2.png" alt=""></a>
+                        </div>
+                        <!-- Footer Menu -->
+                        <div class="footer_menu">
+                            <ul>
+                                <li><a href="@Url.Action("Index", "Shop")">Shop</a></li>
+                                <li><a href="@Url.Action("Index","Blog")">Blog</a></li>
+                                <li><a href="@Url.Action("Index","Contact")">Liên hệ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Widget Area -->
+                <div class="col-12 col-md-6">
+                    <div class="single_widget_area mb-30">
+                        <ul class="footer_widget_menu">
+                            <li><a href="@Url.Action("Index", "Shop")">Sản phẩm</a></li>
+                            <li><a href="@Url.Action("Index","Blog")">Blog</a></li>
+                            <li><a href="@Url.Action("Index","Contact")">Liên hệ</a></li>
+                            <li><a href="#">Giỏ hàng</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-end">
+                <!-- Single Widget Area -->
+                <div class="col-12 col-md-6">
+                    <div class="single_widget_area">
+
+                    </div>
+                </div>
+                <!-- Single Widget Area -->
+                <div class="col-12 col-md-6">
+                    <div class="single_widget_area">
+                        <div class="footer_social_area">
+                            <a href="https://www.facebook.com/" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="https://www.instagram.com/" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            <a href="https://twitter.com/?lang=vi" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="https://www.pinterest.com/" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                            <a href="https://www.youtube.com/?gl=VN" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    @*<script src="js/jquery/jquery-2.2.4.min.js"></script>*@
+
+    <script src="~/Content/template/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    @*<script src="js/popper.min.js"></script>*@
+    <script src="~/Content/template/js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    @*<script src="js/bootstrap.min.js"></script>*@
+    <script src="~/Content/template/js/bootstrap.min.js"></script>
+    <!-- Plugins js -->
+    @*<script src="js/plugins.js"></script>*@
+    <script src="~/Content/template/js/plugins.js"></script>
+    <!-- Classy Nav js -->
+    @*<script src="js/classy-nav.min.js"></script>*@
+    <script src="~/Content/template/js/classy-nav.min.js"></script>
+    <!-- Active js -->
+    @*<script src="js/active.js"></script>*@
+    <script src="~/Content/template/js/active.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    @*@RenderSection("js_index", required: false)*@
+    <script src="~/Content/style-cart/js/bootstrap-datepicker.js"></script>
+    <script src="~/Content/style-cart/js/bootstrap.min.js"></script>
+    <script src="~/Content/style-cart/js/google_map.js"></script>
+    <script src="~/Content/style-cart/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Content/style-cart/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/Content/style-cart/js/jquery.animateNumber.min.js"></script>
+    <script src="~/Content/style-cart/js/jquery.countTo.js"></script>
+    <script src="~/Content/style-cart/js/jquery.easing.1.3.js"></script>
+    <script src="~/Content/style-cart/js/jquery.flexslider-min.js"></script>
+    <script src="~/Content/style-cart/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/style-cart/js/jquery.min.js"></script>
+    <script src="~/Content/style-cart/js/jquery.stellar.min.js"></script>
+    <script src="~/Content/style-cart/js/jquery.waypoints.min.js"></script>
+    <script src="~/Content/style-cart/js/magnific-popup-options.js"></script>
+    <script src="~/Content/style-cart/js/main.js"></script>
+    <script src="~/Content/style-cart/js/owl.carousel.min.js"></script>
+    <script src="~/Content/style-cart/js/popper.min.js"></script>
+    <script src="~/Content/style-cart/js/respond.min.js"></script>
+
+</body>
+
+</html>

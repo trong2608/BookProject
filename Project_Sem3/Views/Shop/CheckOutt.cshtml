@@ -1,0 +1,69 @@
+﻿
+
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="row1">
+    <div class="col-lg-8">
+        <div class="row row-pb-lg">
+            @{Html.RenderAction("CheckOut", "Shop");}
+
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        
+            <form action="/Shop/CheckOutt" method="post">
+                <div class="row">
+
+                    <div class="cart-detail">
+
+                        <h2 class="mid">Thông tin thanh toán</h2>
+
+                        <ul>
+                            <li>
+                                <span>Họ và tên </span>
+                                <input class="input_check_cart" type="text" name="fullname" id="name" value="@ViewBag.us.cus_name" placeholder="Họ và tên">
+
+                            </li>
+                            <li>
+                                <span>Địa chỉ </span>
+                                <input class="input_check_cart" type="text" name="address" id="address" value="@ViewBag.us.address" placeholder="Địa chỉ">
+
+                            </li>
+                            <li>
+                                <span>Số điện thoại </span>
+                                <input class="input_check_cart" type="text" name="phone" id="phone" value="@ViewBag.us.phone" placeholder="Số điện thoại">
+
+                            </li>
+                            <li>
+                                <span>Mô tả </span>
+
+                                <textarea class="input_check_cart" type="text" name="description" id="description" value="" placeholder="Mô tả"></textarea>
+
+                            </li>
+                            <li>
+                                <span>Phương thức thanh toán</span>
+                                <input class="method_pay" type="text" readonly name="payment_met" value="Thanh toán khi nhận hàng" />
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="row">
+
+                        <p><button style="margin-left:125%;" type="submit" class="btn btn-primary">Đặt hàng</button></p>
+
+                    </div>
+                </div>
+            </form>
+        
+
+    </div>
+
+
+</div>

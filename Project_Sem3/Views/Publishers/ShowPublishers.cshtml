@@ -1,0 +1,9 @@
+﻿
+@model IEnumerable<Model.DataModel.Publisher>
+
+
+@foreach (var item in Model)
+{
+    <p><a href="/Shop/Index?publisherid=@item.pub_id">@item.pub_name</a></p>
+
+}

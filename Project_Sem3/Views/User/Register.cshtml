@@ -1,0 +1,166 @@
+﻿@using Project_Sem3.Models;
+@{
+    Layout = null;
+    var htmlregister = Html.For<RegisterViewModel>();
+}
+
+<html lang="en">
+<head>
+    <title>SignUp</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Content/style-login/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/style-login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/style-login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/style-login/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/style-login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/style-login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/style-login/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/style-login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/style-login/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/style-login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/style-login/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('/Content/style-login/images/bg-01.jpg');">
+
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+                <form class="login100-form validate-form"  action="/User/Register" method="post">
+                    <span class="login100-form-title p-b-49">
+                        Sign Up
+                    </span>
+
+                    @*<div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
+                            <span class="label-input100">Email</span>
+                            <input class="input100" type="text" name="username" placeholder="Type your username">
+                            <span class="focus-input100" data-symbol="&#xf206;"></span>
+                        </div>
+
+
+
+
+                        <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
+                            <span class="label-input100">Tên khách hàng</span>
+                            <input class="input100" type="text" name="phone" placeholder="Type your name">
+                            <span class="focus-input100" data-symbol="&#xf206;"></span>
+                        </div>
+
+                    *@
+                    @if (ViewBag.Success != null)
+                    {
+                        <div class="alert alert-success" style="color:red;">@ViewBag.Success</div>
+                    }
+
+                    @using (Html.BeginForm())
+                    {
+
+                        <div  data-validate="Username is reauired">
+                            <span class="label-input100">Email</span>
+                            @htmlregister.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email.." } })
+                            @htmlregister.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
+                            <span class="focus-input100" data-symbol="&#xf206;"></span>
+                        </div>
+
+                        <div  data-validate="Password is required">
+                            <span class="label-input100">Password</span>
+                            @htmlregister.EditorFor(model => model.PassWord, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mật khẩu..", type = "password" } })
+                            @htmlregister.ValidationMessageFor(model => model.PassWord, null, new { @class = "text-danger" })
+                            <span class="focus-input100" data-symbol="&#xf190;"></span>
+                        </div>
+
+                        <div data-validate="Password is required">
+                            <span class="label-input100">
+                                Confirm password
+                            </span>
+                            @htmlregister.EditorFor(model => model.ConfirmPW, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập lại mật khẩu..", type = "password" } })
+                            @htmlregister.ValidationMessageFor(model => model.ConfirmPW, null, new { @class = "text-danger" })
+                            <span class="focus-input100" data-symbol="&#xf190;"></span>
+                        </div>
+                        <div  data-validate="Username is reauired">
+                            <span class="label-input100">Tên khách hàng</span>
+
+                            @htmlregister.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Họ và tên.." } })
+                            @htmlregister.ValidationMessageFor(model => model.UserName, null, new { @class = "text-danger" })
+
+                            <span class="focus-input100" data-symbol="&#xf206;"></span>
+                        </div>
+                        <div  data-validate="Username is reauired">
+                            <span class="label-input100">Số điện thoại</span>
+
+                            @htmlregister.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Số điện thoại." } })
+                            @htmlregister.ValidationMessageFor(model => model.Phone, null, new { @class = "text-danger" })
+                            <span class="focus-input100" data-symbol="&#xf206;"></span>
+                        </div>
+                        <div  data-validate="Username is reauired">
+                            <span class="label-input100">Địa chỉ</span>
+                            @htmlregister.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Địa chỉ.." } })
+                            @htmlregister.ValidationMessageFor(model => model.Address, null, new { @class = "text-danger" })
+                            <span class="focus-input100" data-symbol="&#xf206;"></span>
+                        </div>
+
+                        <div class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button class="login100-form-btn" type="submit" value="Đăng kí">
+                                    Sign Up
+                                </button>
+                            </div>
+                        </div>
+
+                    }
+
+
+
+
+
+
+
+                    <div class="flex-col-c p-t-155">
+                        <a href="@Url.Action("Index", "Home")" class="txt2">
+                            Trang chủ
+                        </a>
+                        <a href="@Url.Action("Login", "Home")" class="txt2">
+                            Login
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="~/Content/style-login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/style-login/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/style-login/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Content/style-login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/style-login/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/style-login/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/Content/style-login/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/style-login/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/style-login/js/main.js"></script>
+
+</body>
+</html>
+

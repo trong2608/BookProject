@@ -1,0 +1,67 @@
+﻿@model Model.DataModel.Oders_Detail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin_quanli/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Oders_Detail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Oderss.cus_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oderss.cus_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Products.pro_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Products.pro_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.detail_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.detail_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.detail_sale_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.detail_sale_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_price)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Order_Detail }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

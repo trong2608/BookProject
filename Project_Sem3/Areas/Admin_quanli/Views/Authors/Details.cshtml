@@ -1,0 +1,51 @@
+﻿@model Model.DataModel.Author
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin_quanli/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <h2>Chi tiết</h2>
+
+            <div>
+
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.author_name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.author_name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.image)
+                    </dt>
+
+                    <dd>
+                        <img src="@Model.image" alt="Alternate Text" />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Sửa", "Edit", new { id = Model.author_id }) |
+                @Html.ActionLink("Quay lại", "Index")
+            </p>
+        </div>
+    </div>
+</div>

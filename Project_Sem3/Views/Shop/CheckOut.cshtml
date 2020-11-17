@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Project_Sem3.Models.Basket>
+
+@{
+    ViewBag.Title = "CheckOut";
+}
+
+<div class="col-md-12">
+    <div class="product-name d-flex">
+        <div class="one-forth text-left px-4">
+            <span>Ảnh</span>
+        </div>
+        <div class="one-eight text-center">
+            <span>Tên sản phẩm</span>
+        </div>
+        <div class="one-eight text-center">
+            <span>Giá</span>
+        </div>
+        <div class="one-eight text-center">
+            <span>Số lượng</span>
+        </div>
+        <div class="one-eight text-center">
+            <span>Tiền</span>
+        </div>
+
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="product-cart d-flex">
+            <div class="one-forth">
+                <div class="product-img">
+                    <img src="@Url.Content(item.Picture)" alt="">
+                </div>
+
+            </div>
+            <div class="one-eight text-center">
+                <div class="display-tc">
+                    <span class="price">@item.ProductName</span>
+                </div>
+            </div>
+            <div class="one-eight text-center">
+                <div class="display-tc">
+                    <span class="price">@item.Price VNĐ</span>
+                </div>
+            </div>
+            <div class="one-eight text-center">
+                <div class="display-tc">
+                    <span class="price">@item.Quantity </span>
+                </div>
+            </div>
+
+            <div class="one-eight text-center">
+                <div class="display-tc">
+                    <span class="price">@Html.DisplayFor(modelItem => item.Money) VNĐ </span>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+<div class="row row-pb-lg">
+    <div class="col-md-123">
+        <div class="total-wrap">
+            <div class="row">
+                <div class="col-sm-4 text-center">
+                    <div class="total3">
+                        <div class="grand-total">
+                            <p><span><strong style="color:white">Total:</strong></span> <span style="color:white">@ViewBag.Total VNĐ</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
